@@ -2,6 +2,7 @@ function compute(){
     let doc = document.getElementById("answ");
     let docValuePost = infixToPostfix(doc.value);
     console.log(docValuePost);
+    let storydiv = document.getElementById("story");
     
     const stack =[];
     const operators = {
@@ -20,8 +21,14 @@ function compute(){
             stack.push(result); 
         }
     }
+
+    var p = document.createElement("p");
+    p.innerText = doc.value +" = "+ stack[0];
+    storydiv.append(p)
     doc.value = stack[0];
+    
 }
+
 function infixToPostfix(expression) {
     const operators = {
       '+': 1,
